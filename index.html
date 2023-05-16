@@ -1,0 +1,596 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>5月10日晚青葵与前情缘事件经过</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#5月10日晚青葵与前情缘事件经过">5月10日晚青葵与前情缘事件经过</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#事件简述">事件简述</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#23年部分">23年部分</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#21年部分">21年部分</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#总结">总结</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#疑点">疑点</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#传音部分">传音部分</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#女主发声">女主发声</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#男主发声">男主发声</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#女主回应">女主回应</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#传音结局">传音结局</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#一些其他人的言论和嘴臭">一些其他人的言论和嘴臭</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#题外话">题外话</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#题外瓜">题外瓜</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#云梦群部分11日凌晨）">云梦群部分（11日凌晨）</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#云梦群部分11日上午）">云梦群部分（11日上午）</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#云梦群部分11日中午）">云梦群部分（11日中午）</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#云梦群部分11日下午）">云梦群部分（11日下午）</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#贴吧部分">贴吧部分</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#路人和受害亲友发言节选">路人和受害亲友发言节选</a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=''><h1 id='5月10日晚青葵与前情缘事件经过'><span>5月10日晚青葵与前情缘事件经过</span></h1><h2 id='事件简述'><span>事件简述</span></h2><h3 id='23年部分'><span>23年部分</span></h3><p><span>10号晚上有小号发喇叭控诉渣男骗炮，声明男主是大白，大白做出回应，是正常恋爱关系，并声明女主是青葵。</span></p><p><span>11号凌晨，青葵在云梦群发言。</span></p><p><span>11号上午、中午、下午，青葵在云梦群发言，并晒出转账记录。</span></p><p><span>11号中午大白和大白情缘在云梦群发言，并晒出吃饭记录。</span></p><p><span>11号下午，青葵贴吧发贴，有大量截图记录。</span></p><p><span>11号傍晚，男主帖子里回应。 </span></p><h3 id='21年部分'><span>21年部分</span></h3><p><span>根据截止5月13日看到的三方（青葵、大白、大白情缘）信息总结的时间线，大部分来自青葵的发言和截图。小部分根据大白和大白情缘的发言做了修正，后续有说明理由。让大家自己判断一下。</span></p><p><span>12月，大白到广州驻场开发，公司走携程商旅定了长期酒店。</span></p><p><span>12月11日青葵来到广州，期间与三人面基（与接站人吃晚饭，11日深夜与大白到酒店，12日面基另一人）。11日下午，有人接站并面基，一起吃饭（不是大白）。</span></p><p><span>12月12日凌晨青葵面基大白，大白送青葵到酒店，摸了青葵假发但是没睡，大白去住的朋友酒店（2:15前离开），第一次见面后双方开始处对象。</span></p><p><span>12月12日青葵面基其他人，青葵说是女性，大白说是也动手动脚的男性。</span></p><p><span>12月15日青葵转给大白1000元，作为恋爱经费。男主早已弃用这个支付宝账号，当时并不知情。</span></p><p><span>12月16日-22日广州在大白酒店同居期间第一次睡，还做了强迫不可能做到的事。</span></p><p><span>12月25日青葵送花。</span></p><p><span>12月31日青葵送花。</span></p><p><span>12月31日-22年1月3日珠海见面，青葵开的房，在男主返回广州之后，青葵提出分手，大白同意。</span></p><p><span>确认情侣关系和两次分手时间没有截图记录。</span></p><h2 id='总结'><span>总结</span></h2><p><span>青葵焦点：渣男第一次见面就骗她上床，是骗炮。</span></p><p><span>青葵诉求：证明自己只是太笨了太相信别人，都是渣男的错；见不得渣男秀恩爱，不想让渣男好过。</span></p><p><span>大白焦点：不是骗炮，当时是情侣关系。</span></p><p><span>大白诉求：前期自证清白，后期一起发烂发臭。</span></p><p><span>事件佐证：前期只有小作文，后期有部分聊天记录截图、转账截图和同居吃饭的截图。</span></p><p><span>注：前期、后期指23年双方对线的前期和后期，不是21年事件发生时的前期和后期</span></p><h2 id='疑点'><span>疑点</span></h2><p><span>根据双方发言整理了一些存疑内容。</span></p><p><span>1.喇叭里说第一次见面即12月11日，亲嘴qj上床（喇叭部分），后来改口摸假发扒裤子（群聊部分），后来改口扒着假发亲上去动手动脚（贴吧回应男主部分）。11日是否发生了特殊关系，如果没有，16号再次见面前，双方已经是情侣关系了，后续不会存在qj行为。</span></p><p><span>2.青葵12月12日在广州面基的人到底是男是女？青葵说是女性，大白说是男性。青葵和大白都承认第一次见面之后变成情侣关系，如果是男性，是否也有亲密行为？是否也算出轨？</span></p><p><span>3.15日青葵转账前，只有12日晚上12点-2点见过面，之后青葵转账大白1000元，如果说是为了补偿大白开销，2小时做了什么花了1000？如果是aa就是2000了。关于用途，青葵说是补偿饭钱，大白说是青葵不想谈恋爱光男方花钱，转的恋爱经费。另外，大白说那个支付宝弃用很久了，被8前都不知道被转账了，有和青葵吃饭记录的支付宝和被转账的支付宝都不是同一个。</span></p><p><span>4.青葵时间线只有16-19号同居，但是大白晒出了21-22号一起吃饭的截图，同居时间应该不止16-19号。</span></p><p><span>5.声称第一次是qj，但却做了强迫不可能做到的事（贴吧男主回应）。如果是qj，后续还会转账并继续同居？</span></p><p><span>6.21年的事情23年才说。</span></p><p><span>7.相信声声慢的大家，却不相信警察。</span></p><p><span>8.自爆目的是不想让大白好过，看不得他秀恩爱，但自己在22年-23年也谈过情缘？</span></p><p><span>9.缺乏可靠的完整时间线，大白是否存在脚踏两条船行为。</span></p><p><span>10.青葵与大白曾有感情纠纷。21年年中，青葵和亲友控诉大白后，青葵亲友与大白在喇叭对骂。到12月奔现，过程极其曲折。</span></p><p><span>下面是23年截的图，传音部分截图没上游戏或许有缺漏，感谢及时截图的热心群友。尽量按照发言顺序记录。</span></p><h2 id='传音部分'><span>传音部分</span></h2><p><span>10号晚上突然有小号发喇叭，中间换了一些小号，叙事的传音喇叭大部分是青葵小号，除了男主id秋去冬白白。喇叭不打码，其他部分打码。如果有人介意可以联系我。</span></p><p><span>故事从这里开始。先看女主线。</span></p><h3 id='女主发声'><span>女主发声</span></h3><p><span> </span><img src=".\image\image-20230511095734347.png" referrerpolicy="no-referrer" alt="image-20230511095734347"></p><p><span> </span><img src=".\image\image-20230511095845791.png" referrerpolicy="no-referrer" alt="image-20230511095845791"></p><p><span> </span><img src=".\image\image-20230511095939870.png" referrerpolicy="no-referrer" alt="image-20230511095939870"></p><p><span> </span><img src=".\image\image-20230511095950716.png" referrerpolicy="no-referrer" alt="image-20230511095950716"></p><p><span> </span><img src=".\image\image-20230511095959814.png" referrerpolicy="no-referrer" alt="image-20230511095959814"></p><p><span> </span><img src=".\image\image-20230511100011073.png" referrerpolicy="no-referrer" alt="image-20230511100011073"></p><p><span> </span><img src=".\image\image-20230511100042090.png" referrerpolicy="no-referrer" alt="image-20230511100042090"></p><p><span> </span><img src=".\image\image-20230511100049865.png" referrerpolicy="no-referrer" alt="image-20230511100049865"></p><p><span> </span><img src=".\image\image-20230511100121911.png" referrerpolicy="no-referrer" alt="image-20230511100121911"></p><p><span> </span><img src=".\image\image-20230511100155201.png" referrerpolicy="no-referrer" alt="image-20230511100155201"></p><p><span> </span><img src=".\image\image-20230511100202436.png" referrerpolicy="no-referrer" alt="image-20230511100202436"></p><p><span> </span><img src=".\image\image-20230511100721155.png" referrerpolicy="no-referrer" alt="image-20230511100721155"></p><p><span> </span><img src=".\image\image-20230511100337792.png" referrerpolicy="no-referrer" alt="image-20230511100337792"></p><p><span> </span><img src=".\image\image-20230511100346732.png" referrerpolicy="no-referrer" alt="image-20230511100346732"></p><p><span> </span><img src=".\image\image-20230511100414037.png" referrerpolicy="no-referrer" alt="image-20230511100414037"></p><p><span> </span><img src=".\image\image-20230511100437835.png" referrerpolicy="no-referrer" alt="image-20230511100437835"></p><p><span> </span><img src=".\image\image-20230511100523353.png" referrerpolicy="no-referrer" alt="image-20230511100523353"></p><p><span> </span><img src=".\image\image-20230511100913876.png" referrerpolicy="no-referrer" alt="image-20230511100913876"></p><p><span> </span><img src=".\image\image-20230511100941011.png" referrerpolicy="no-referrer" alt="image-20230511100941011"></p><p><span> </span><img src=".\image\image-20230511101139552.png" referrerpolicy="no-referrer" alt="image-20230511101139552"></p><h3 id='男主发声'><span>男主发声</span></h3><p><span>男主发声和女主回应有些地方有对应关系，连着看下来应该能看懂，就不直接对应起来了。</span></p><p><span> </span><img src=".\image\image-20230511101418872.png" referrerpolicy="no-referrer" alt="image-20230511101418872"></p><p><span> </span><img src=".\image\image-20230511101429485.png" referrerpolicy="no-referrer" alt="image-20230511101429485"></p><p><span> </span><img src=".\image\image-20230511101445421.png" referrerpolicy="no-referrer" alt="image-20230511101445421"></p><p><span> </span><img src=".\image\image-20230511101546252.png" referrerpolicy="no-referrer" alt="image-20230511101546252"></p><p><span> </span><img src=".\image\image-20230511101517821.png" referrerpolicy="no-referrer" alt="image-20230511101517821"></p><p><span> </span><img src=".\image\image-20230511102131305.png" referrerpolicy="no-referrer" alt="image-20230511102131305"></p><p><span> </span><img src=".\image\image-20230511102144500.png" referrerpolicy="no-referrer" alt="image-20230511102144500"></p><p><span> </span><img src=".\image\image-20230511102152277.png" referrerpolicy="no-referrer" alt="image-20230511102152277"></p><p><span> </span><img src=".\image\image-20230511102822590.png" referrerpolicy="no-referrer" alt="image-20230511102822590"></p><p><span> </span><img src=".\image\image-20230511102957892.png" referrerpolicy="no-referrer" alt="image-20230511102957892"></p><p><img src=".\image\image-20230511103609556.png" referrerpolicy="no-referrer" alt="image-20230511103609556"><span> </span><img src=".\image\image-20230511103443494.png" referrerpolicy="no-referrer" alt="image-20230511103443494"></p><p><span> </span><img src=".\image\image-20230511103046933.png" referrerpolicy="no-referrer" alt="image-20230511103046933"></p><h3 id='女主回应'><span>女主回应</span></h3><p><span> </span><img src=".\image\image-20230511101349189.png" referrerpolicy="no-referrer" alt="image-20230511101349189"></p><p><span> </span><img src=".\image\image-20230511101741195.png" referrerpolicy="no-referrer" alt="image-20230511101741195"></p><p><span> </span><img src=".\image\image-20230511103312062.png" referrerpolicy="no-referrer" alt="image-20230511103312062"></p><p><span> </span><img src=".\image\image-20230511103548940.png" referrerpolicy="no-referrer" alt="image-20230511103548940"></p><p><span> </span><img src=".\image\image-20230511103633643.png" referrerpolicy="no-referrer" alt="image-20230511103633643"></p><p><span> </span><img src=".\image\image-20230511101759503.png" referrerpolicy="no-referrer" alt="image-20230511101759503"></p><p><span> </span><img src=".\image\image-20230511101843265.png" referrerpolicy="no-referrer" alt="image-20230511101843265"></p><p><span> </span><img src=".\image\image-20230511102624074.png" referrerpolicy="no-referrer" alt="image-20230511102624074"></p><p><span> </span><img src=".\image\image-20230511102654336.png" referrerpolicy="no-referrer" alt="image-20230511102654336"></p><p><span> </span><img src=".\image\image-20230511103650352.png" referrerpolicy="no-referrer" alt="image-20230511103650352"></p><p><span> </span><img src=".\image\image-20230511103700097.png" referrerpolicy="no-referrer" alt="image-20230511103700097"></p><p><span> </span><img src=".\image\image-20230511103723474.png" referrerpolicy="no-referrer" alt="image-20230511103723474"></p><p><span> </span><img src=".\image\image-20230511103734803.png" referrerpolicy="no-referrer" alt="image-20230511103734803"></p><h3 id='传音结局'><span>传音结局</span></h3><p><span>下面这条发完之后，青葵到云梦群对线了</span></p><p><span> </span><img src=".\image\image-20230511103139576.png" referrerpolicy="no-referrer" alt="image-20230511103139576"></p><p><span>下面是男主3点发的</span></p><p><span> </span><img src=".\image\image-20230511123417757.png" referrerpolicy="no-referrer" alt="image-20230511123417757"></p><p><span> </span><img src=".\image\image-20230511123556645.png" referrerpolicy="no-referrer" alt="image-20230511123556645"></p><p><span> </span><img src=".\image\image-20230511123612159.png" referrerpolicy="no-referrer" alt="image-20230511123612159"></p><h3 id='一些其他人的言论和嘴臭'><span>一些其他人的言论和嘴臭</span></h3><p><span>有些可能没放上来，截图都是从别人发的里面截得，争议比较大的武当言论尽量找全了，其他的喇叭看到就放了。</span></p><p><span> </span><img src=".\image\image-20230511102234285.png" referrerpolicy="no-referrer" alt="image-20230511102234285"></p><p><img src=".\image\image-20230511102302609.png" referrerpolicy="no-referrer" alt="image-20230511102302609"><span> </span></p><p><span> </span><img src=".\image\image-20230511101904799.png" referrerpolicy="no-referrer" alt="image-20230511101904799"></p><p><span> </span><img src=".\image\image-20230511102350659.png" referrerpolicy="no-referrer" alt="image-20230511102350659"></p><p><span> </span><img src=".\image\image-20230511102414374.png" referrerpolicy="no-referrer" alt="image-20230511102414374"></p><p><span> </span><img src=".\image\image-20230511101821704.png" referrerpolicy="no-referrer" alt="image-20230511101821704"></p><p><span> </span><img src=".\image\image-20230511102455254.png" referrerpolicy="no-referrer" alt="image-20230511102455254"></p><p><span> </span><img src=".\image\image-20230511102504644.png" referrerpolicy="no-referrer" alt="image-20230511102504644"></p><p><span> </span><img src=".\image\image-20230511102832391.png" referrerpolicy="no-referrer" alt="image-20230511102832391"></p><p><span> </span><img src=".\image\image-20230511103020294.png" referrerpolicy="no-referrer" alt="image-20230511103020294"></p><p><span> </span><img src=".\image\image-20230511103219497.png" referrerpolicy="no-referrer" alt="image-20230511103219497"></p><h3 id='题外话'><span>题外话</span></h3><p><span>有个很有意思的事情，当知道女主是青葵前，吃瓜群众是这个态度（取了一个代表发言）</span></p><p><span> </span><img src=".\image\image-20230511104349581.png" referrerpolicy="no-referrer" alt="image-20230511104349581"></p><p><span>知道是青葵后</span></p><p><span> </span><img src=".\image\image-20230511104644599.png" referrerpolicy="no-referrer" alt="image-20230511104644599"></p><p><span>其他人的态度可以可以加一些群了解一下</span></p><h3 id='题外瓜'><span>题外瓜</span></h3><p><span>这些是什么瓜谁能开贴仔细说说</span></p><p><span> </span><img src=".\image\image-20230511100637222.png" referrerpolicy="no-referrer" alt="image-20230511100637222"></p><p><span> </span><img src=".\image\image-20230511100645187.png" referrerpolicy="no-referrer" alt="image-20230511100645187"></p><p><span> </span><img src=".\image\image-20230511102554938.png" referrerpolicy="no-referrer" alt="image-20230511102554938"></p><p><span> </span><img src=".\image\image-20230511102525166.png" referrerpolicy="no-referrer" alt="image-20230511102525166"></p><p><span> </span><img src=".\image\image-20230511102731523.png" referrerpolicy="no-referrer" alt="image-20230511102731523"></p><p><span> </span><img src=".\image\image-20230511103412311.png" referrerpolicy="no-referrer" alt="image-20230511103412311"></p><h2 id='云梦群部分11日凌晨）'><span>云梦群部分（11日凌晨）</span></h2><p><span>传音吵完以后，当晚青葵到云梦群继续对线。</span></p><p><span>聊天记录里有张反复出现的截图太小了，先放到前面。</span></p><p><span>她抢我名字、误惹出碧海是青葵。</span></p><p><span> </span><img src=".\image\image-20230511131147224.png" referrerpolicy="no-referrer" alt="image-20230511131147224"></p><p><span>以下是主体部分</span></p><p><img src=".\image\image-20230511132117576.png" referrerpolicy="no-referrer" alt="image-20230511132117576"></p><p><span>有人还提到了这个。</span></p><p><span> </span><img src="./image/image-20230513222501067.png" referrerpolicy="no-referrer" alt="image-20230513222501067"></p><h2 id='云梦群部分11日上午）'><span>云梦群部分（11日上午）</span></h2><p><span>11日上午，青葵在云梦群再次发言，并晒出了12月15日1000元转账记录，同时也出现了男主现情缘（同时也是21年情缘）。</span></p><p><span>1000元的原因，青葵说是饭钱，大白说是恋爱经费。</span></p><p><span>233是青葵，弋是男主现情缘 。</span><img src="./image/image-20230514211727018.png" referrerpolicy="no-referrer" alt="image-20230514211727018"></p><p><img src="./image/image-20230514221955596.png" referrerpolicy="no-referrer" alt="image-20230514221955596"></p><p><img src="./image/image-20230514222214756.png" referrerpolicy="no-referrer" alt="image-20230514222214756"></p><p><img src="./image/image-20230514222253239.png" referrerpolicy="no-referrer" alt="image-20230514222253239"></p><p><img src="./image/image-20230514222503723.png" referrerpolicy="no-referrer" alt="image-20230514222503723"></p><p><img src="./image/image-20230514222528748.png" referrerpolicy="no-referrer" alt="image-20230514222528748"></p><h2 id='云梦群部分11日中午）'><span>云梦群部分（11日中午）</span></h2><p><span>11日中午，大白出现，和青葵对线并回答群友疑问，期间大白转了1000给青葵。</span></p><p><img src="./image/image-20230514223527221.png" referrerpolicy="no-referrer" alt="image-20230514223527221"></p><p><img src="./image/image-20230514223739290.png" referrerpolicy="no-referrer" alt="image-20230514223739290"></p><h2 id='云梦群部分11日下午）'><span>云梦群部分（11日下午）</span></h2><p><span>11日下午，青葵和大白分别发言，大白晒出第二次见面吃饭记录。外婆屯卤肉饭是连锁店，虽然没看到市桥易发街店，但是大众点评中，大石店的双人套餐价格32.9，单人9.79-17元不等，有理由相信31元是双人餐。壹品香木桶饭已关门，从名字与他类似的一品湘木桶饭价格来看，20元左右是盖饭的价格，煲饭类38左右，有理由相信58元是双人餐。外派驻场开发，即使每顿都和同事一起吃，也不会顿顿都是同一个人付钱。所以结合大白说同居一周左右来看，青葵帖子里的时间线很可能有错误，是从16号-22号同居。</span></p><p><img src="./image/image-20230514230222840.png" referrerpolicy="no-referrer" alt="image-20230514230222840"></p><p><img src="./image/image-20230514230255146.png" referrerpolicy="no-referrer" alt="image-20230514230255146"></p><p><img src="./image/image-20230514230311181.png" referrerpolicy="no-referrer" alt="image-20230514230311181"></p><h2 id='贴吧部分'><span>贴吧部分</span></h2><p><span>青葵贴吧发贴记录事情经过，有大量截图，男主回应在88楼。</span></p><p><span> </span><img src="./image/image-20230513223621713.png" referrerpolicy="no-referrer" alt="image-20230513223621713"></p><h2 id='路人和受害亲友发言节选'><span>路人和受害亲友发言节选</span></h2><p><span> </span><img src=".\image\image-20230511140104763.png" referrerpolicy="no-referrer" alt="image-20230511140104763"></p><p><span> </span><img src=".\image\image-20230511141420275.png" referrerpolicy="no-referrer" alt="image-20230511141420275"></p><p><span>云梦群里更精彩，篇幅原因就放这些，群里的梦梦们个个是人才，说话又好听，真的很精彩。</span></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>
